@@ -1,0 +1,18 @@
+input {
+
+    border-radius: 2em;
+    border: none;
+    margin: 2em;
+    padding: 0.8em;
+    width:600px;
+    color: #A2A2A2;
+    font-size: 1.1em;
+    padding-left: 1.5em;
+    
+    outline: none;
+    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%)
+}
+
+textarea{
+	resize:none;
+}

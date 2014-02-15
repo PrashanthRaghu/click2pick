@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+	
+	<title> ClickNPick.FB | Three Clicks to your social purchase </title>
+
+	<link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="demoPage.css" />
+	<link rel="stylesheet" type="text/css" href="../textbox.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="leaflet.css" />
+	
+	<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+	
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="http://leafletjs.com/dist/leaflet.js"></script>
+	
+	<script src="autoCmplt.js"> </script>
+	<script src="fbLogin.js"> </script>
+	<script src="mapInfo.js"> </script>
+	
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+	
+	<script type="text/javascript" src="../jquery.fullPage.js"></script>
+	<script type="text/javascript" src="examples.js"></script>
+	
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			var pepe = $.fn.fullpage({
+				slidesColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+				menu: '#menu'
+			});		
+		});
+		
+	</script>
+
+</head>
+<body>
+
+<div id="demosMenu">
+	
+</div>		
+
+<div class="section " id="section0">
+	<div class="slide">
+		<h1> Click 'N' Pick.FB _- </h1>
+	
+		<div id='content'>
+				<section class='input'>
+					<div>
+						<input id="product" type='text' placeholder=' What do you want to get shipped ??'>
+					</div>
+					
+					<div>
+						<h3 id="loading"></h3>
+					</div>
+					
+				</section>
+		</div>
+	</div> 	
+	
+	<div class="slide">
+		<div class="intro" id='s2'>
+				<h2 id="productName"> </h1>
+				
+				<div align="center" id="usresult" style="margin-left:25%;font-size:24px;float:left;width:200px;font-family:'Architects Daughter'" onclick=invokeLogin('us')>  </div>
+				<div align="center" id="ukresult" style="margin-left:3%;font-size:24px;float:left;width:200px;font-family:'Architects Daughter'" onclick=invokeLogin('uk')> </div>
+				<div align="center" id="cnresult" style="margin-left:3%;font-size:24px;float:left;width:200px;font-family:'Architects Daughter'" onclick=invokeLogin('cn')>  </div>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<h5 id="disclaimer">Product Data from <a href="http://www.amazon.com">amazon.com</a></h5>
+		</div>	
+	</div>
+	
+    <div class="slide">
+		<div class="intro">
+			<div id="map" style="width: 1280px; height: 1024px"></div>
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>
