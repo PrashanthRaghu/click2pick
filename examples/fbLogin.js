@@ -49,11 +49,11 @@
 		init = 0;
 			
 		for(friend in myFriends){
-			
+
 			if( myFriends[friend].location ){
-				
+
 				t =  myFriends[friend].location.id;
-				
+
 				if(!locationToLat[t]) {
 					locationToLat[t] = {}
 					locationToLat[t].id = t;
@@ -67,20 +67,22 @@
 		}
 
 		for(lc in locationToLat) {
-			
+
 			FB.api( '/' + lc , function(response){
 					id = response.id;
 					lat = locationToLat[id].latitude = response.location.latitude;
 					longi = locationToLat[id].longitude = response.location.longitude;
-					
+
 					if(init == 0){
 						initMap();
 						init++;
 					}else{
-						addToMap( lat , longi , locationToLat[id].users[0][0] , locationToLat[id].users[0][1]);
+						addToMap( lat , longi , locationToLat[id].users[0][0] , locationToLat[id].users[0][1], 'green');
 					}
 			});
 		}
+		
+
     }); 
   }
 

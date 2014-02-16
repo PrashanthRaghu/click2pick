@@ -2,8 +2,6 @@
   var productInfo = {};
   
   $(function() {
-	
-	var count = 0;
 	  
     var availableTags = [
       "Nexus 4",
@@ -26,11 +24,14 @@
     
     $( "#product" ).autocomplete({
       source: availableTags,
-      
-      select:function(event , ui){
-		   productName = "" + ui.item.value;
-		    
-		   $("#loading").html("Loading results from Amazon ");
+      select: productSelect
+    });
+  });
+
+  function productSelect(event, ui){
+		   productName = $("#product").val();
+		   	var count = 0;
+		   $("#loading").html("<img src='status.gif'> Loading results from Amazon ");
 		   $("#productName").html("What you might end up paying for " + productName );
 		  
 		  enterProduct = true;
@@ -40,12 +41,15 @@
 			  type:'POST',
 			  success:function(data){
 				count += 1;
+				data = $.parseJSON(data.replace(/\\/g, ''));
 				if(count == 3){
 					$.fn.fullpage.moveTo('firstPage', 1);
 					$("#loading").html(" ");
+					$("#productImage").attr('src' , data.image);
 				}  
-				data = $.parseJSON(data.replace(/\\/g, ''));
-				$('#usresult').html( "$" + data.price + "<br/>" + "(USA)" + "<br/>" + "<button class='punch'>  Find Friends </button>");
+				
+
+				$('#usresult').html("$" + data.price + "<br/>" + "<a href='"+data.url+"'>"+"(USA)" + "</a> <br/>" + " <button class='punch'>  Find Friends </button> ");
 				$("#loading").append(" USA,");
 				
 				productInfo.us = {}
@@ -63,13 +67,14 @@
 			  type:'POST',
 			  success:function(data){
 				count += 1;
+				data = $.parseJSON(data.replace(/\\/g, ''));
 				if(count == 3){
 					$.fn.fullpage.moveTo('firstPage', 1);
 					$("#loading").html(" ");
+					$("#productImage").attr( 'src' , data.image );
 				}
 				  
-				data = $.parseJSON(data.replace(/\\/g, ''))
-				$('#ukresult').html("£" + data.price + "<br/>" + "(UK)" + "<br/>" + "<button class='punch'>  Find Friends </button>");
+				$('#ukresult').html("£" + data.price + "<br/>" + "<a href='"+data.url+"'>"+"(UK)" + "</a><br/>" + " <button class='punch'>  Find Friends </button> ");
 				$("#loading").append(" UK,");
 				productInfo.uk = {}
 				productInfo.uk.url = data.url;
@@ -85,14 +90,14 @@
 			  type:'POST',
 			  success:function(data){
 				count += 1;
-				
+				data = $.parseJSON(data.replace(/\\/g, ''));
 				if(count == 3){
 					$.fn.fullpage.moveTo('firstPage', 1);
 					$("#loading").html(" ");
+					$("#productImage").attr('src' , data.image);
 				}  
 				
-				data = $.parseJSON(data.replace(/\\/g, ''))
-				$('#cnresult').html("¥" + data.price + "<br/>" + "(China)" + "<br/>" + " <button class='punch'>  Find Friends </button> ");
+				$('#cnresult').html("¥" + data.price + "<br/>" + "<a href='"+data.url+"'>"+"(China)" + "</a><br/>" + " <button class='punch'>  Find Friends </button> ");
 				$("#loading").append(" China, ");
 				
 				productInfo.cn = {}
@@ -103,7 +108,4 @@
 				console.log(err,code,data);
 			  }
 			});
-		
-	  }
-    });
-  });
+  }	

@@ -28,6 +28,13 @@
 		</script>
 	<![endif]-->
 	
+	<style>
+		.slides{
+		background-image: url(../imgs/bg.jpg);
+		background-image: cover;
+	}
+	</style>
+
 	<script type="text/javascript" src="../jquery.fullPage.js"></script>
 	<script type="text/javascript" src="examples.js"></script>
 	
@@ -45,6 +52,18 @@
 
 </head>
 <body>
+
+<script>
+	$(document).ready(function(){
+  $('#product').keyup(function(e){
+		if(e.keyCode == 13)
+		{
+			productSelect( e , "dummy" );
+		}
+		}); 
+  });
+
+</script>
 
 <div id="demosMenu">
 	
@@ -70,8 +89,14 @@
 	
 	<div class="slide">
 		<div class="intro" id='s2'>
+		  <br>
+		  	<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 				<h2 id="productName"> </h1>
-				
+				<div align="center" ><img id="productImage"> </img></div>
 				<div align="center" id="usresult" style="margin-left:25%;font-size:24px;float:left;width:200px;font-family:'Architects Daughter'" onclick=invokeLogin('us')>  </div>
 				<div align="center" id="ukresult" style="margin-left:3%;font-size:24px;float:left;width:200px;font-family:'Architects Daughter'" onclick=invokeLogin('uk')> </div>
 				<div align="center" id="cnresult" style="margin-left:3%;font-size:24px;float:left;width:200px;font-family:'Architects Daughter'" onclick=invokeLogin('cn')>  </div>
@@ -82,10 +107,7 @@
 			<br/>
 			<br/>
 			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
+			
 			<h5 id="disclaimer">Product Data from <a href="http://www.amazon.com">amazon.com</a></h5>
 		</div>	
 	</div>
