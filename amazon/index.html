@@ -1,0 +1,59 @@
+<html>
+<head>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+ 
+  $('#submit').click(function() {
+  	 $.ajax({
+      url:'/amazon/price.php?hello='+$("#hello").val()+'&locale=com',
+      type:'POST',
+      success:function(data){
+      	data = data.replace(/\\/g, '');
+        $('#result').append(data);
+      },
+      error:function(err,code,data){
+        console.log(err,code,data);
+      }
+    });
+  });
+
+   $('#submit').click(function() {
+  	 $.ajax({
+      url:'/amazon/price.php?hello='+$("#hello").val()+'&locale=co.uk',
+      type:'POST',
+      success:function(data){
+      	data = data.replace(/\\/g, '');
+        $('#result').append(data);
+      },
+      error:function(err,code,data){
+        console.log(err,code,data);
+      }
+    });
+  });
+
+    $('#submit').click(function() {
+  	 $.ajax({
+      url:'/amazon/price.php?hello='+$("#hello").val()+'&locale=cn',
+      type:'POST',
+      success:function(data){
+      	data = data.replace(/\\/g, '');
+        $('#result').append(data);
+      },
+      error:function(err,code,data){
+        console.log(err,code,data);
+      }
+    });
+  });
+});
+</script>
+</head>
+
+<body>
+	Enter the product name : <input type="text" id="hello"/>
+	<input id="submit" type="button" value="Get Price"/>
+	<div id="result"></div>
+</body>
+
+</html>
