@@ -16,9 +16,9 @@
 	  connected = true;	
       displayName();
     } else if (response.status === 'not_authorized') {
-      FB.login();
+      FB.login(function(r){},{scope:"basic_info, friends_checkins, friends_education_history, friends_events, friends_hometown, friends_location, public_profile, user_friends"});
     } else {
-      FB.login();
+      FB.login(function(r){} , {scope:"basic_info, friends_checkins, friends_education_history, friends_events, friends_hometown, friends_location, public_profile, user_friends"});
     }
   });
   };
@@ -90,7 +90,7 @@
 	  selectedCountry = country;
 	  
 	  if(!connected){
-		FB.login();
+		FB.login(function(response){}, {scope:"basic_info, friends_checkins, friends_education_history, friends_events, friends_hometown, friends_location, user_friends"});
 	  }else{
 		testAPI();   	
 		$.fn.fullpage.moveTo('firstPage', 2);
